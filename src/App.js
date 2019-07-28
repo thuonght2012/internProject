@@ -262,7 +262,9 @@ class App extends React.Component {
 
           <Route
             path="/addUser"
-            component={() => <FormAddUser addUser={this.addUser} />}
+            component={() => (
+              <FormAddUser addUser={this.addUser} users={users} />
+            )}
           />
           <Route
             path="/updateUser/:id"

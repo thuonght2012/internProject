@@ -161,7 +161,7 @@ class FormUpdateBook extends Component {
                     <NavLink to={{ pathname: '/books' }} className="link">
                       <button
                         type="button"
-                        className="btn btn-success"
+                        className="btn btn-success buttonDF pull-right"
                         onClick={this.editBook}
                       >
                         UPDATE

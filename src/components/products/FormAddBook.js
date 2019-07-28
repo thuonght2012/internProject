@@ -1,11 +1,10 @@
-import React from "react";
-import { withFirebase } from "../Firebase/context";
-import Swal from "sweetalert2";
+import React from 'react';
+import { withFirebase } from '../Firebase/context';
+import Swal from 'sweetalert2';
 
 class FormAddBook extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.categories);
     this.state = {
       errors: [],
       data: []
@@ -17,17 +16,17 @@ class FormAddBook extends React.Component {
 
     cate.map(item => {
       if (name === item.name) {
-        errors.push(name + "  is exists!!");
+        errors.push(name + '  is exists!!');
       }
     });
     if (!name) {
-      errors.push("Name is empty!!");
+      errors.push('Name is empty!!');
     }
     if (!quantity) {
-      errors.push("Quantity is empty!!");
+      errors.push('Quantity is empty!!');
     }
     if (!type) {
-      errors.push("Type is empty!!");
+      errors.push('Type is empty!!');
     }
 
     if (errors.length > 0) {
@@ -41,9 +40,9 @@ class FormAddBook extends React.Component {
     if (this.checkError()) {
       this.handleUpload();
       Swal.fire({
-        title: "Success",
-        text: "Do you want to continue",
-        type: "success"
+        title: 'Success',
+        text: 'Do you want to continue',
+        type: 'success'
       });
     }
   };
@@ -71,7 +70,7 @@ class FormAddBook extends React.Component {
       .ref(`images/${image.name}`)
       .put(image);
     uploadTask.on(
-      "state_changed",
+      'state_changed',
       snapshot => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
@@ -83,7 +82,7 @@ class FormAddBook extends React.Component {
       },
       () => {
         this.props.firebase.storage
-          .ref("images")
+          .ref('images')
           .child(image.name)
           .getDownloadURL()
           .then(url => {
@@ -104,7 +103,7 @@ class FormAddBook extends React.Component {
         <div className="container-fluid">
           <div className="row bg-title">
             <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-              <h4 className="page-title">Basic Table</h4>{" "}
+              <h4 className="page-title">Basic Table</h4>{' '}
             </div>
             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12"> </div>
           </div>
@@ -118,7 +117,7 @@ class FormAddBook extends React.Component {
                       </span>
                     </p>
                   ))
-                : ""}
+                : ''}
               <div className="form-group">
                 <label className="col-md-12"> Name</label>
                 <div className="col-md-12">
@@ -129,7 +128,7 @@ class FormAddBook extends React.Component {
                     name="name"
                     defaultValue={name}
                     onChange={this.handleChange}
-                  />{" "}
+                  />{' '}
                 </div>
               </div>
               <div className="form-group">
@@ -158,7 +157,7 @@ class FormAddBook extends React.Component {
                     name="quantity"
                     defaultValue={quantity}
                     onChange={this.handleChange}
-                  />{" "}
+                  />{' '}
                 </div>
               </div>
               <div className="form-group">
@@ -170,7 +169,7 @@ class FormAddBook extends React.Component {
                     name="image"
                     defaultValue={image}
                     onChange={this.handleImage}
-                  />{" "}
+                  />{' '}
                 </div>
               </div>
 

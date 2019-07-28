@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 export default class FormUpdateCate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: ''
     };
   }
   handleChange = event => {
@@ -47,12 +47,12 @@ export default class FormUpdateCate extends Component {
                           </div>
 
                           <NavLink
-                            to={{ pathname: "/categories" }}
+                            to={{ pathname: '/categories' }}
                             className="link"
                           >
                             <button
                               type="button"
-                              className="btn btn-success"
+                              className="btn btn-success buttonDF pull-right"
                               onClick={() =>
                                 this.editCategories(item.id, this.state.value)
                               }

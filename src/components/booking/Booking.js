@@ -93,21 +93,20 @@ class Booking extends Component {
       <div id="page-wrapper">
         <div className="container-fluid">
           <div className="row bg-title">
-            <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-              <h4 className="page-title">Booking Table</h4>{' '}
-            </div>
+            <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12" />
             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
               {' '}
               <Link
-                className=" pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light"
+                className=" "
                 to={{ pathname: '/borrow' }}
+                style={{
+                  marginRight: '20px',
+                  marginLeft: '88%'
+                }}
               >
                 BORROW
               </Link>
-              <Link
-                className="  pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light"
-                to={{ pathname: '/return' }}
-              >
+              <Link className=" " to={{ pathname: '/return' }}>
                 RETURN
               </Link>
             </div>
@@ -117,7 +116,6 @@ class Booking extends Component {
               <div className="col-sm-12">
                 <div className="white-box">
                   <h3 className="box-title">Booking </h3>
-
                   <div className="table-responsive">
                     <table className="table">
                       <thead>

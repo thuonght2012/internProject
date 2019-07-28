@@ -1,27 +1,75 @@
-import React from "react";
-import { withFirebase } from "../Firebase/context";
-import Swal from "sweetalert2";
+import React from 'react';
+import { withFirebase } from '../Firebase/context';
+import Swal from 'sweetalert2';
 
 class FormAddUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      image: "",
-      arrClass: ["PNV20A", "PNV20B", "PNV19A", "PNV19B", "PNV21A", "PNV21B"]
+      errors: [],
+      image: '',
+      arrClass: ['PNV20A', 'PNV20B', 'PNV19A', 'PNV19B', 'PNV21A', 'PNV21B']
     };
   }
 
-  addUser = () => {
-    this.handleUpload();
-    Swal.fire({
-      title: "Success",
-      text: "Do you want to continue",
-      type: "success"
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
     });
+  };
+  checkError = () => {
+    const { name, age, phone, classes, errors } = this.state;
+    const user = this.props.users;
+
+    user.map(item => {
+      if (name === item.name && phone === item.phone) {
+        errors.push(name + ' - ' + phone + '  is exists!!');
+      }
+    });
+    if (!name) {
+      errors.push('Name is empty!!');
+    }
+    if (!age) {
+      errors.push('Age is empty!!');
+    }
+    if (age < 18 || age > 100) {
+      errors.push('Age is incorrect !!');
+    }
+    if (!phone) {
+      errors.push('Phone is empty!!');
+    }
+    if (phone.length !== 10) {
+      errors.push('Phone must have 10 letters!!');
+    }
+    if (!classes) {
+      errors.push('Class is empty!!');
+    }
+
+    if (errors.length > 0) {
+      this.setState({ errors });
+      return 0;
+    }
+    return 1;
+  };
+  addUser = event => {
+    event.preventDefault();
+    if (this.checkError()) {
+      this.handleUpload();
+      Swal.fire({
+        title: 'Success',
+        text: 'Do you want to continue',
+        type: 'success'
+      });
+    }
   };
 
   handleChange = event => {
+    if (event.target.value) {
+      this.setState({
+        errors: []
+      });
+    }
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -36,12 +84,12 @@ class FormAddUser extends React.Component {
 
   handleUpload = () => {
     const { image } = this.state;
-    console.log("ima", image);
+    console.log('ima', image);
     const uploadTask = this.props.firebase.storage
       .ref(`images/${image.name}`)
       .put(image);
     uploadTask.on(
-      "state_changed",
+      'state_changed',
       snapshot => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
@@ -53,7 +101,7 @@ class FormAddUser extends React.Component {
       },
       () => {
         this.props.firebase.storage
-          .ref("images")
+          .ref('images')
           .child(image.name)
           .getDownloadURL()
           .then(url => {
@@ -67,19 +115,28 @@ class FormAddUser extends React.Component {
   };
 
   render() {
-    const { name, age, image, classes, phone } = this.state;
+    const { name, age, image, classes, phone, errors } = this.state;
     //let { show } = this.state;
     return (
       <div id="page-wrapper">
         <div className="container-fluid">
           <div className="row bg-title">
             <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-              <h4 className="page-title">User Table</h4>{" "}
+              <h4 className="page-title">User Table</h4>{' '}
             </div>
             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12"> </div>
           </div>
           <div className="white-box">
             <form className="form-horizontal form-material">
+              {errors
+                ? errors.map((error, index) => (
+                    <p key={index}>
+                      <span className="label label-danger" key={error}>
+                        Error: {error}
+                      </span>
+                    </p>
+                  ))
+                : ''}
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">NAME</label>
                 <input

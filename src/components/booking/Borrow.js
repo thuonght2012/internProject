@@ -112,7 +112,7 @@ class Borrow extends Component {
         <td>{index + 1}</td>
         <td>{item.id}</td>
         <td>{item.name}</td>
-        <td>1</td>
+        <td>{item.quantity}</td>
         <td>
           <img src={item.image} width="50px" alt="" />
         </td>
@@ -167,29 +167,6 @@ class Borrow extends Component {
     event.preventDefault();
     console.log('object');
   };
-
-  resultAdd = () => {
-    const { selectItem } = this.state.productsChoose;
-    if (selectItem) {
-      const itemadd = selectItem.map((item, index) => (
-        <tr key={index}>
-          <td>{index + 1}</td>
-          <td>{item.id}</td>
-          <td>{item.name}</td>
-          <td>1</td>
-          <td>
-            <img src={item.image} width="50px" alt="" />
-          </td>
-          <td>
-            <button onClick={() => this.add(index)} className="btn btn-primary">
-              Add
-            </button>
-          </td>
-        </tr>
-      ));
-      return itemadd;
-    }
-  };
   remove = index => {
     data.splice(index, 1);
     this.setState({
@@ -228,14 +205,13 @@ class Borrow extends Component {
   render() {
     const dataSelected = this.state.productsChoose.map(
       (productsChoose, index) => {
-        const { image, name, id, quantity } = productsChoose.item;
-
+        const { image, name, id } = productsChoose.item;
         return (
           <tr key={index}>
             <td>{index + 1}</td>
-            <td>{name}</td>
             <td>{id}</td>
-            <td>{quantity}</td>
+            <td>{name}</td>
+            <td>{productsChoose.quantity}</td>
             <td>
               <img src={image} width="50px" alt="" />
             </td>
@@ -253,7 +229,6 @@ class Borrow extends Component {
     );
 
     let { resultSearchProduct } = this.state;
-
     return (
       <div id="page-wrapper">
         <div className="container-fluid">
@@ -265,16 +240,18 @@ class Borrow extends Component {
             <form onSubmit={this.onSubmit} className="row">
               <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div className="app-search =">
-                  <form className="form-inline md-form form-sm active-pink active-pink-2 mt-2">
+                  <form
+                    className="form-inline md-form form-sm active-pink active-pink-2 mt-2"
+                    style={{ width: '300px' }}
+                  >
                     <i className="fa fa-search" aria-hidden="true" />
-                    {/* <label>User</label> */}
                     {this.state.nameDisplay ? (
                       <input
                         className="form-control form-control-sm ml-3 w-75"
                         name="valueBook"
                         style={{ marginTop: '0px' }}
                         type="text"
-                        placeholder="Search Books .........."
+                        placeholder="Search User .........."
                         onKeyPress={this.searchUser}
                         onChange={this.handleChange}
                         value={this.state.nameDisplay && this.state.nameDisplay}
@@ -285,7 +262,7 @@ class Borrow extends Component {
                         name="valueBook"
                         style={{ marginTop: '0px' }}
                         type="text"
-                        placeholder="Search Books .........."
+                        placeholder="Search Book .........."
                         onKeyPress={this.searchUser}
                         onChange={this.handleChange}
                       />

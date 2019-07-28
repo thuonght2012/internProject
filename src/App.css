@@ -61,7 +61,7 @@
   padding-left: 220px;
 }
 
-.form-group input[name="search"] {
+.form-group input[name='search'] {
   margin: 40px;
 }
 .left-show {
@@ -77,8 +77,9 @@
 .top-left-part .logo {
   font-size: 33px;
   padding-left: 12px;
-  font-family: ".VnShelley Allegro";
+  font-family: '.VnShelley Allegro';
   color: #c8d1d6;
+  background: #85b4d0;
 }
 .link {
   color: #797979;
@@ -89,11 +90,18 @@
   color: #797979;
   margin-top: 2px;
 }
+a.btn .btn-success .buttonDF .pull-right h1 {
+  padding-top: 9px;
+}
 
-/* .btn-danger {
-  background: #85b4d0 !important;
-  border-color: #85b4d0 !important;
-} */
+h3.box-title {
+  font-size: 30px !important;
+  display: flex;
+  float: left;
+  margin-left: 609px !important;
+  margin-bottom: 35px !important;
+  font-weight: 100px !important;
+}
 
 .buttonDF {
   background: #85b4d0 !important;
