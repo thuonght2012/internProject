@@ -244,14 +244,14 @@ class Borrow extends Component {
                     className="form-inline md-form form-sm active-pink active-pink-2 mt-2"
                     style={{ width: '300px' }}
                   >
-                    <i className="fa fa-search" aria-hidden="true" />
+                    <i className="fa fa-user" aria-hidden="true" />
                     {this.state.nameDisplay ? (
                       <input
                         className="form-control form-control-sm ml-3 w-75"
                         name="valueBook"
                         style={{ marginTop: '0px' }}
                         type="text"
-                        placeholder="Search User .........."
+                        placeholder="Search .........."
                         onKeyPress={this.searchUser}
                         onChange={this.handleChange}
                         value={this.state.nameDisplay && this.state.nameDisplay}
@@ -262,7 +262,7 @@ class Borrow extends Component {
                         name="valueBook"
                         style={{ marginTop: '0px' }}
                         type="text"
-                        placeholder="Search Book .........."
+                        placeholder="Search .........."
                         onKeyPress={this.searchUser}
                         onChange={this.handleChange}
                       />
