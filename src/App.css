@@ -77,9 +77,10 @@
 .top-left-part .logo {
   font-size: 33px;
   padding-left: 12px;
-  font-family: '.VnShelley Allegro';
+  font-family: Pacifico;
   color: #c8d1d6;
   background: #85b4d0;
+  font-style: oblique;
 }
 .link {
   color: #797979;
@@ -98,7 +99,7 @@ h3.box-title {
   font-size: 30px !important;
   display: flex;
   float: left;
-  margin-left: 609px !important;
+  /* margin-left: 609px !important; */
   margin-bottom: 35px !important;
   font-weight: 100px !important;
 }
@@ -113,4 +114,12 @@ h3.box-title {
 
 .label-danger {
   width: 200px !important;
+}
+div.col-ld-9.col-sm-8.col-xs-12 {
+  margin-left: -44px !important;
+  max-width: 76% !important;
+}
+div.col-lg-9 {
+  flex: 0 0 75%;
+  max-width: 65% !important;
 }

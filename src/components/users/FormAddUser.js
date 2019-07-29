@@ -211,6 +211,10 @@ class FormAddUser extends React.Component {
             </form>
           </div>
         </div>
+        <footer className="footer text-center">
+          {' '}
+          thuongthuy@gmail.com || (+84) 856 244 358{' '}
+        </footer>
       </div>
     );
   }

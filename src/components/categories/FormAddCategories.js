@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Swal from "sweetalert2";
+import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 
 export default class FormAddCategories extends Component {
   constructor(props) {
@@ -7,7 +7,7 @@ export default class FormAddCategories extends Component {
     // console.log(props.categories);
 
     this.state = {
-      name: "",
+      name: '',
       errors: []
     };
   }
@@ -18,12 +18,12 @@ export default class FormAddCategories extends Component {
 
     cate.map(item => {
       if (name === item.name) {
-        errors.push(name + "  is exists!!");
+        errors.push(name + '  is exists!!');
       }
     });
 
     if (!name) {
-      errors.push("Name is empty!!");
+      errors.push('Name is empty!!');
     }
     if (errors.length > 0) {
       this.setState({ errors });
@@ -47,9 +47,9 @@ export default class FormAddCategories extends Component {
     if (this.checkError()) {
       this.props.addCategory(this.state.name);
       Swal.fire({
-        title: "Success",
-        text: "Do you want to continue",
-        type: "success"
+        title: 'Success',
+        text: 'Do you want to continue',
+        type: 'success'
       });
     }
   };
@@ -61,7 +61,7 @@ export default class FormAddCategories extends Component {
         <div className="container-fluid">
           <div className="row bg-title">
             <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-              <h4 className="page-title">Basic Table</h4>{" "}
+              <h4 className="page-title">Basic Table</h4>{' '}
             </div>
             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12"> </div>
           </div>
@@ -78,7 +78,7 @@ export default class FormAddCategories extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter book's quantity"
+                  placeholder="Enter type book"
                   id="addTask"
                   name="name"
                   defaultValue={name}
@@ -99,6 +99,10 @@ export default class FormAddCategories extends Component {
             </form>
           </div>
         </div>
+        <footer className="footer text-center">
+          {' '}
+          thuongthuy@gmail.com || (+84) 856 244 358{' '}
+        </footer>
       </div>
     );
   }

@@ -363,6 +363,10 @@ class Borrow extends Component {
             type={this.state.notificationData.type}
           />
         ) : null}
+        <footer className="footer text-center">
+          {' '}
+          thuongthuy@gmail.com || (+84) 856 244 358{' '}
+        </footer>
       </div>
     );
   }

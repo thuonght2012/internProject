@@ -115,7 +115,7 @@ class Booking extends Component {
             <div className="row">
               <div className="col-sm-12">
                 <div className="white-box">
-                  <h3 className="box-title">Booking </h3>
+                  <h3 className="box-title">Borrow table </h3>
                   <div className="table-responsive">
                     <table className="table">
                       <thead>
@@ -135,6 +135,10 @@ class Booking extends Component {
             </div>
           )}
         </div>
+        <footer className="footer text-center">
+          {' '}
+          thuongthuy@gmail.com || (+84) 856 244 358{' '}
+        </footer>
       </div>
     );
   }

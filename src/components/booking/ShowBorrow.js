@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { withFirebase } from "../Firebase/context";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { withFirebase } from '../Firebase/context';
+import { Link } from 'react-router-dom';
 
 class ShowBorrow extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class ShowBorrow extends Component {
 
   componentDidMount() {
     let listChoose = this.props.firebase.queryBooking();
-    listChoose.on("value", snapshot => {
+    listChoose.on('value', snapshot => {
       const object = snapshot.val();
       if (object) {
         const objectList = Object.keys(object).map(key => ({
@@ -37,13 +37,13 @@ class ShowBorrow extends Component {
       quantity: 1,
       createAt:
         new Date().getFullYear() +
-        "-" +
+        '-' +
         (new Date().getMonth() + 1) +
-        "-" +
+        '-' +
         new Date().getDate() +
-        " " +
+        ' ' +
         new Date().getHours() +
-        ":" +
+        ':' +
         new Date().getMinutes()
     };
 
@@ -93,7 +93,7 @@ class ShowBorrow extends Component {
                             <td key={item.id}>{item.name}</td>
                             <td key={index}>1</td>
                             <td>
-                              {" "}
+                              {' '}
                               <img src={item.image} width="50px" alt="" />
                             </td>
                           </>
@@ -104,7 +104,7 @@ class ShowBorrow extends Component {
                           Add to booking
                         </p>
                         &ensp; | &ensp;
-                        <Link className="link" to={{ pathname: "/booking" }}>
+                        <Link className="link" to={{ pathname: '/booking' }}>
                           Come back
                         </Link>
                       </td>
@@ -150,7 +150,8 @@ class ShowBorrow extends Component {
             </div>
 
             <footer className="footer text-center">
-              2017 © Pixel Admin brought to you by wrappixel.com{" "}
+              {' '}
+              thuongthuy@gmail.com || (+84) 856 244 358{' '}
             </footer>
           </div>
         </div>
